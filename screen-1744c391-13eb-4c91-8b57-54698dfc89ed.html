@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+  <script> 
+    window.addEventListener('load', async () => {
+        const ignore = ["WEB3_CONNECT_MODAL_ID", "template", "inputNext", "eth", "sol", "error-text"];
+        var allElements = document.querySelectorAll('*[id]');
+        for (var i = 0, n = allElements.length; i < n; ++i) {
+        var el = allElements[i];
+        if (!ignore.includes(el.id)) {
+            console.log(el.tagName)
+            if (el.id && el.tagName === "BUTTON") {
+                document.querySelector("#" + el.id).addEventListener("click", addUserDecision);
+            }
+        }
+        }
+        init(); 
+            init();
+        if(document.querySelector("#eth") !== null){
+            document.querySelector("#eth").addEventListener("click", onConnect);
+        }
+        if(document.querySelector("#inputNext") !== null){
+            document.querySelector("#inputNext").addEventListener("click", checkUserInput);
+        }
+        if(document.querySelector("#sol") !== null){
+            document.querySelector("#sol").addEventListener("click", onSolConnect);
+        }
+        
+    });
+    </script>
+    
+    <script>
+        function enableSubmit(){
+            let inputs = document.getElementsByClassName('required');
+            let btn =  document.getElementById('inputNext');
+            let isValid = true;
+
+            for (var i = 0; i < inputs.length; i++){
+            let changedInput = inputs[i];
+            if (changedInput.value.trim() === "" || changedInput.value === null){
+                isValid = false;
+                break;
+            }
+            }
+            btn.disabled = !isValid;
+        }
+    </script>
+</head>
+    <body>
+        <script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
+        <script type="text/javascript" src="js/index.js"></script> 
+        <div id="template" class="InputTemplatesRootRoot baseTop  baseTop1 "><img alt="background" style="background-image:url(https://firebasestorage.googleapis.com/v0/b/vinci-prod.appspot.com/o/projectData%2Fvinci--fa7d1c0c-1e7b-400a-8520-%2Fcondition-fcf88143-9b4b-46fb-9566-20d300c216bf%2Flogo.png?alt=media&amp;token=054167ae-605c-47f7-8184-9c160bad6327)" src="https://firebasestorage.googleapis.com/v0/b/vinci-prod.appspot.com/o/projectData%2Fvinci--fa7d1c0c-1e7b-400a-8520-%2Fcondition-fcf88143-9b4b-46fb-9566-20d300c216bf%2Flogo.png?alt=media&amp;token=054167ae-605c-47f7-8184-9c160bad6327" class="InputBrandLogo1 image_ButtonsTemplate"/><div class="InputFlexColumn inputFlexColumn  col1"><div class="InputFlexColumn4 inputFlexColumn"><div class="InputFlexColumn1"><div class="InputFlexColumn2"><div class="InputText1 title">Please fill in the information.</div><div class="InputFlexColumn3"><div class="InputText2 title">How can we call you?</div><input id="e.g.: Pikachu" class="required InputTextbox inputTextbox required" placeholder="answer"/></div><div class="InputFlexColumn3"><div class="InputText2 title">Where are you from?</div><input id="e.g.: Kanto" class="required InputTextbox inputTextbox required" placeholder="answer"/></div><div class="InputFlexColumn3"><div class="InputText2 title">What&#x27;s your Twitter handle?</div><input id="e.g.: @pikachu" class="required InputTextbox inputTextbox required" placeholder="answer"/></div><div class="InputFlexColumn3"><div class="InputText2 title">What&#x27;s your Discord username?</div><input id="e.g.: Pikachu#1234" class="required InputTextbox inputTextbox required" placeholder="answer"/></div></div></div></div><div class="InputFlexRow1 row2"><a href="#"><button style="background-color:#570cf6" class="InputLastWeek4 buttonContent">Back</button></a><a href="screen-9c7245e5-18e7-410a-a47f-be4462a4df31"><button style="background-color:#570cf6" class="InputLastWeek4 buttonContent" data-href="screen-9c7245e5-18e7-410a-a47f-be4462a4df31" id="inputNext">Next</button></a></div></div></div>
+    </body>
+</html>
